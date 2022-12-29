@@ -50,7 +50,7 @@ function WeatherChart() {
 
   return (
     <div
-      className={`mt-5 text-center transition-height transition-slowest h-${heigth}`}
+      className={`mt-10 text-center transition-height transition-slowest h-${heigth}`}
     >
       {children}
     </div>

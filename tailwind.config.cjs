@@ -9,6 +9,7 @@ module.exports = {
       secundarysky: "#91D8E4",
       fontNight: "#F0E9D2",
       fontSky: "#EAFDFC",
+      hoverNight: "#485F5B",
     },
     extend: {
       transitionProperty: {

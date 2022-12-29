@@ -3,9 +3,10 @@ export const WeatherContext = createContext();
 const key = "a7765b4c37264d8b94144019222812";
 
 export function WeatherContextProvider(props) {
-  const [data, setData] = useState({});
+  const [history, setHistory] = useState([]);
   const [weather, setWeather] = useState({});
   const [location, setLocation] = useState({});
+  const [showHistory, setShowHistory] = useState(false);
 
   async function searchData(city) {
     if (city.length === 0) {
@@ -23,9 +24,13 @@ export function WeatherContextProvider(props) {
 
     setWeather(response.current);
     setLocation(response.location);
+    setHistory([{ location: response.location, date: new Date() }, ...history]);
+    console.log("history", history);
+    localStorage.setItem("history", history);
   }
+
   return (
-    <WeatherContext.Provider value={{ data, searchData, weather, location }}>
+    <WeatherContext.Provider value={{ searchData, weather, location, history }}>
       {props.children}
     </WeatherContext.Provider>
   );
