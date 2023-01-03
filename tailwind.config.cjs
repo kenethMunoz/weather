@@ -8,6 +8,7 @@ module.exports = {
       secundaryNight: "#678983",
       secundarysky: "#91D8E4",
       fontNight: "#F0E9D2",
+      fontNightSecundary: "#D8D1BD",
       fontSky: "#EAFDFC",
       hoverNight: "#485F5B",
     },
@@ -17,5 +18,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
 };

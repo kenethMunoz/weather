@@ -14,7 +14,6 @@ function App() {
         <WeatherChart />
       </div>
       <RecordButton />
-      <HistoryList />
     </div>
   );
 }
