@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { WeatherContext } from "../context/WeatherContext.jsx";
+import HistoryPreview from "./HistoryPreview.jsx";
 
 function HistoryList() {
   const { history, showHistory, animationParent } = useContext(WeatherContext);
@@ -18,24 +19,8 @@ function HistoryList() {
     max-h-48
     `}
     >
-      {history.map((search) => {
-        return (
-          <li
-            key={search.id}
-            className={`${
-              search.id % 2 === 0 ? "bg-fontNightSecundary" : "bg-fontNight"
-            }
-            p-3 rounded
-            `}
-          >
-            <p className="text-xs">
-              <span className="font-bold">
-                {search.location.country}, {search.location.region}.
-              </span>{" "}
-              {search.date.toJSON().slice(0, 10)}
-            </p>
-          </li>
-        );
+      {history.map((search, index) => {
+        return <HistoryPreview key={index} search={search} />;
       })}
     </ul>
   );

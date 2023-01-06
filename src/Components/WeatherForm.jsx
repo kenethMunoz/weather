@@ -2,9 +2,7 @@ import React, { useContext, useState } from "react";
 import { WeatherContext } from "../context/WeatherContext.jsx";
 
 function WeatherForm() {
-  const [text, setText] = useState([]);
-
-  const { searchData } = useContext(WeatherContext);
+  const { searchData, text, setText } = useContext(WeatherContext);
   function search(e) {
     e.preventDefault();
     searchData(text);
@@ -12,6 +10,7 @@ function WeatherForm() {
   return (
     <form className="flex">
       <input
+        placeholder="Search a city"
         className="text-secundaryNight 
         shadow-[0px_22px_70px_4px_rgba(0,0,0,0.70)]
         px-8 py-3 rounded flex-1  mr-10  "

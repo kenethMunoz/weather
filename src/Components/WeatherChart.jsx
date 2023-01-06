@@ -3,11 +3,24 @@ import { WeatherContext } from "../context/WeatherContext.jsx";
 
 function WeatherChart() {
   const { weather, location } = useContext(WeatherContext);
-  let children;
-  let heigth;
-  if (Object.entries(weather).length !== 0) {
-    heigth = "56";
-    children = (
+
+  if (location.error) {
+    return (
+      <div className={`mt-10 text-center }`}>
+        <p className="text-red">{location.error}</p>
+      </div>
+    );
+  }
+
+  if (
+    Object.entries(weather).length === 0 ||
+    Object.entries(location).length === 0
+  ) {
+    return <></>;
+  }
+
+  return (
+    <div className={`mt-10 text-center  h-56}`}>
       <>
         <h2 className="font-bold">Current Weather:</h2>
         <h3>
@@ -43,16 +56,6 @@ function WeatherChart() {
           {weather.condition.text}
         </p>
       </>
-    );
-  } else {
-    heigth = "0";
-  }
-
-  return (
-    <div
-      className={`mt-10 text-center transition-height transition-slowest h-${heigth}`}
-    >
-      {children}
     </div>
   );
 }
